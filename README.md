@@ -111,7 +111,18 @@ third
 > vesselsSunk <- c(4, 5, 1)
 > barplot(vesselsSunk)
 ```
-<img src="imgs/1.png" width="60%">
+<img src="imgs/barplot-1.png" width="60%">
+
+```
+> names(vesselsSunk) <- c("England", "France", "Norway")
+> barplot(vesselsSunk)
+```
+<img src="imgs/barplot-2.png" width="60%">
+
+```
+> barplot(1:100)
+```
+<img src="imgs/barplot-3.png" width="60%">
 
 
 
