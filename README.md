@@ -80,7 +80,7 @@ Vectors cannot hold values with different modes (types). All the values were con
 
 ### Vetcor Names
 
-**names** Functions to get or set the names of an object.
+**names()** Functions to get or set the names of an object.
 
 ```
 > ranks <- 1:3
@@ -105,7 +105,7 @@ third
 
 ### Plotting One Vector
 
-**barplot** function draws a bar chart with a vector's values.
+**barplot()** function draws a bar chart with a vector's values.
 
 ```
 > vesselsSunk <- c(4, 5, 1)
@@ -124,7 +124,192 @@ third
 ```
 <img src="imgs/barplot-3.png" width="60%">
 
+### Vector Math
+
+```
+> a <- c(1, 2, 3)
+> a + 1
+[1] 2 3 4
+
+> a*2
+[1] 2 4 6
+
+> a == c(1, 8, 3)
+[1] TRUE FALSE TRUE
+
+> a > c(1, 1, 1)
+[1] FALSE TRUE TRUE
+
+> b <- c(2, 3, 4)
+> a+b
+[1] 3 5 7
+
+> c <- c(2, 3, 4, 5, 6, 7)
+> a+c
+[1] 3 5 7 6 8 10
+
+> sin(a)
+[1] 0.8414710 0.9092974 0.1411200
+
+> sqrt(a)
+[1] 1.000000 1.414214 1.732051
+```
+
+### Scatter Plots
+
+The **plot()** function takes two vectors, one for X values and one for Y values, and draws a graph of them.
+
+```
+> x <- seq(1, 20, 0.1)
+> y <- sin(x)
+> plot(x, y)
+```
+<img src="imgs/plot-1.png" width="60%">
+
+```
+> values <- -10:10
+> absolutes <- abs(values)
+> plot(values, absolutes)
+```
+<img src="imgs/plot-2.png" width="60%">
+
+### NA VAlues
+
+```
+> a <- c(1, 3, NA, 7, 9)
+> sum(a)
+[1] NA
+
+> sum(a, na.rm = TRUE)
+[1] 20
+```
+
+## Matrices
+
+```
+> matrix(0, 3, 4)
+     [,1] [,2] [,3] [,4]
+[1,]    0    0    0    0
+[2,]    0    0    0    0
+[3,]    0    0    0    0
+
+> a<-1:12
+> matrix(a, 3, 4)
+     [,1] [,2] [,3] [,4]
+[1,]    1    4    7   10
+[2,]    2    5    8   11
+[3,]    3    6    9   12
+```
+The **dim()** assignment function sets dimensions for a matrix. It accepts a vector with the number of rows and the number of columns to assign.
+
+```
+> plank <- 1:8
+> dim(plank) <- c(2,4)
+> plank
+     [,1] [,2] [,3] [,4]
+[1,]    1    3    5    7
+[2,]    2    4    6    8
+
+> plank[2:3]
+[1] 6
+
+> plank[2,]
+[1] 2 4 6 8
+
+> plank[, 2:4]
+     [,1] [,2] [,3]
+[1,]    3    5    7
+[2,]    4    6    8
+```
 
 
+### Matrix Plotting
+
+```
+> elevation <- matrix(1, 10, 10)
+> elevation[4,6] <- 0
+> contour(elevation)
+```
+<img src="imgs/contour-1.png" width="60%">
+
+```
+> persp(elevation)> 
+```
+<img src="imgs/persp-1.png" width="60%">
+
+```
+> persp(elevation, expand=0.2)
+```
+<img src="imgs/persp-2.png" width="60%">
+
+```
+> contour(volcano)
+```
+<img src="imgs/contour-2.png" width="60%">
+
+```
+> persp(volcano, expand=0.2)
+```
+<img src="imgs/persp-3.png" width="60%">
+
+```
+> image(volcano)
+```
+<img src="imgs/image-1.png" width="60%">
 
 
+## Summary Statistics
+
+### Mean
+```
+> limbs <- c(4, 3, 4, 3, 2, 4, 4, 4)
+> names(limbs) <- c('One-Eye', 'Peg-Leg', 'Smitty', 'Hook', 'Scooter', 'Dan', 'Mikey', 'Blackbeard')
+> mean(limbs)
+[1] 3.5
+
+> barplot(limbs)
+```
+<img src="imgs/mean-1.png" width="60%">
+
+```
+> abline(h = mean(limbs))
+```
+<img src="imgs/mean-2.png" width="60%">
+
+### Median
+```
+> limbs <- c(4, 3, 4, 3, 2, 4, 4, 14)
+> names(limbs) <- c('One-Eye', 'Peg-Leg', 'Smitty', 'Hook', 'Scooter', 'Dan', 'Mikey', 'Davy Jones')
+> mean(limbs)
+[1] 4.75
+
+> barplot(limbs)
+> abline(h = mean(limbs))
+```
+<img src="imgs/median-1.png" width="60%">
+
+```
+> median(limbs)
+[1] 4
+
+> barplot(limbs)
+> abline(h = median(limbs))
+```
+<img src="imgs/median-2.png" width="60%">
+
+
+### Standard Deviation
+
+```
+> pounds <- c(45000, 50000, 35000, 40000, 35000, 45000, 10000, 15000)
+> barplot(pounds)
+> meanValue <- mean(pounds)
+> deviation <- sd(pounds)
+> abline(h = meanValue)
+> abline(h = meanValue + deviation)
+> abline(h = meanValue - deviation)
+```
+<img src="imgs/sd-1.png" width="60%">
+
+
+## Factors
