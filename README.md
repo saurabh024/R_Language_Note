@@ -32,12 +32,15 @@ $ brew install gfortran R
 > list.files() // list the files in the current directory
 ```
 
+---
+
 ## Run script
 
 ```
 > source("bottle1.R") // Run "bottle1.R" script
 ```
 
+---
 ## Vectors 
 
 ( c is short for Combine ) creates a new vector by combining a list of values.
@@ -311,5 +314,50 @@ The **dim()** assignment function sets dimensions for a matrix. It accepts a vec
 ```
 <img src="imgs/sd-1.png" width="60%">
 
-
+---
 ## Factors
+
+```
+> chests <- c('gold', 'silver', 'gems', 'gold', 'gems')
+> print(chests)
+[1] "gold"   "silver" "gems"   "gold"   "gems" 
+
+> types <- factor(chests)
+> print(types)
+[1] gold   silver gems   gold   gems  
+Levels: gems gold silver
+
+> as.integer(types)
+[1] 2 3 1 2 1
+
+> levels(types)
+[1] "gems"  "gold"  "silver"
+```
+
+### Plots With Factors
+
+```
+> weights <- c(300, 200, 100, 250, 150)
+> prices <- c(9000, 5000, 12000, 7500, 18000)
+> plot(weights, prices)
+```
+
+<img src="imgs/plot-with-factor-1.png" width="60%">
+
+
+```
+> plot(weights, prices, pch=as.integer(types))
+```
+<img src="imgs/plot-with-factor-2.png" width="60%">
+
+```
+> legend("topright", c("gems", "gold", "silver"), pch=1:3)
+```
+<img src="imgs/plot-with-factor-3.png" width="60%">
+
+```
+> legend("topright", levels(types), pch=1:length(levels(types)))
+```
+<img src="imgs/plot-with-factor-4.png" width="60%">
+
+
